@@ -14,6 +14,8 @@ struct FlashcardView: View {
     @State private var currentIndex = 0
     @State private var isShowingAnswer = false
     @State private var hasCompletedAllCards = false
+    @State private var shuffledTerms: [(spanish: String, english: String)] = []
+    @State private var cardRotation: Double = 0.0
     
     //    let topic: LanguageModel.LanguageTopic
     
@@ -33,18 +35,18 @@ struct FlashcardView: View {
             
             if hasCompletedAllCards {
                 VStack(spacing: 30) {
-                        Text("🎉")
-                            .font(.system(size: 80))
-                        
-                        Text("Great Work!")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                        
-                        Text("You've reviewed all \(termsArray.count) flashcards!")
-                            .font(.title3)
-                            .foregroundColor(.secondary)
-                            .multilineTextAlignment(.center)
-
+                    Text("🎉")
+                        .font(.system(size: 80))
+                    
+                    Text("Great Work!")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                    
+                    Text("You've reviewed all \(termsArray.count) flashcards!")
+                        .font(.title3)
+                        .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                    
                     
                     //complete button
                     Button {
@@ -52,40 +54,66 @@ struct FlashcardView: View {
                     } label: {
                         Text(viewModel.flashcardButtonLabel(forTopic: topicTitle))
                             .font(.headline)
-                                        .padding()
-                                        .frame(maxWidth: 250)
-                                        .background(Color.blue)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(15)
+                            .padding()
+                            .frame(maxWidth: 250)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
                     }
                     
+                    Button {
+                        // Reset to start
+                        shuffledTerms = termsArray.shuffled()
+                        currentIndex = 0
+                        isShowingAnswer = false
+                        hasCompletedAllCards = false
+                    } label: {
+                        Text("Restart Flashcards")
+                            .font(.headline)
+                            .padding()
+                            .frame(maxWidth: 250)
+                            .background(Color.blue)
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
+                    }
+                    //.padding(.top, 20)
                 }
+                
                 .padding()
                 .frame(width: geometry.size.width, height: geometry.size.height)
-            } else {
+        } else {
                 VStack {
                     Spacer()
-                    if termsArray.isEmpty {
+                    if shuffledTerms.isEmpty {
                         Text("No flashcards available for this topic")
                     } else {
                         //card display
                         VStack(spacing: 20) {
+                            // front side of card (Spanish)
                             ZStack {
                                 RoundedRectangle(cornerRadius: 15)
                                     .fill(Color.blue.opacity(0.2))
                                     .frame(height: cardHeight)
                                 
-                                Text(isShowingAnswer ? termsArray[currentIndex].english : termsArray[currentIndex].spanish)
+                                Text(isShowingAnswer ? shuffledTerms[currentIndex].english : shuffledTerms[currentIndex].spanish)
                                     .font(.largeTitle)
                                     .padding()
                             }
                             .frame(height: cardHeight)
+                            .rotation3DEffect(
+                                .degrees(cardRotation),
+                                axis: (x: 1.0, y: 0.0, z: 0.0)
+                            )
                             .contentShape(Rectangle())
                             .onTapGesture {
-                                print("Card tapped! isShowingAnswer was: \(isShowingAnswer)")
-                                isShowingAnswer.toggle()
-                                print("isShowingAnswer is now: \(isShowingAnswer)")
-                                print("Showing text: \(isShowingAnswer ? termsArray[currentIndex].english : termsArray[currentIndex].spanish)")
+//                                isShowingAnswer.toggle()
+                                withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                    cardRotation += 180
+                                    // Flip the content halfway through
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                                        isShowingAnswer.toggle()
+                                    }
+                                }
                             }
                         }
                         .padding()
@@ -95,6 +123,7 @@ struct FlashcardView: View {
                             Button{ /*"Previous"*/
                                 currentIndex -= 1
                                 isShowingAnswer = false
+                                cardRotation = 0
                             } label: {
                                 HStack {
                                     Image(systemName: "chevron.left")
@@ -113,15 +142,16 @@ struct FlashcardView: View {
                                 .frame(width: 20)
                             
                             Button {
-                                if currentIndex == termsArray.count - 1 {
+                                if currentIndex == shuffledTerms.count - 1 {
                                     hasCompletedAllCards = true
                                 } else {
                                     currentIndex += 1
                                     isShowingAnswer = false
+                                    cardRotation = 0
                                 }
                             } label : {
                                 HStack {
-                                    Text(currentIndex == termsArray.count - 1 ? "Finish" : "Next")
+                                    Text(currentIndex == shuffledTerms.count - 1 ? "Finish" : "Next")
                                     Image(systemName: "chevron.right")
                                 }
                                 .frame(maxWidth: .infinity)
@@ -142,6 +172,9 @@ struct FlashcardView: View {
                 //        .navigationTitle("\(topicTitle)")
             }
             //    }
+        }
+        .onAppear {
+            shuffledTerms = termsArray.shuffled()
         }
     }
 }
