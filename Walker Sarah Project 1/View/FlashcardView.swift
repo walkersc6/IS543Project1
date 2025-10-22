@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// most of this code came from Claude: https://claude.ai/share/52945a46-b3cd-45f5-99db-b0f10d6bcc6e
+// I had it walk me through step by step
+
 struct FlashcardView: View {
     @State var viewModel: LanguageViewModel
     // variables from Claude:
@@ -16,9 +19,7 @@ struct FlashcardView: View {
     @State private var hasCompletedAllCards = false
     @State private var shuffledTerms: [(spanish: String, english: String)] = []
     @State private var cardRotation: Double = 0.0
-    
-    //    let topic: LanguageModel.LanguageTopic
-    
+
     var termsArray: [(spanish: String, english: String)] {
         viewModel.terms(forTopic: topicTitle)
             .sorted(by: { $0.key < $1.key })
@@ -27,9 +28,6 @@ struct FlashcardView: View {
     }
     
     var body: some View {
-        //        let _ = print("termsArray: \(termsArray)")
-        
-        //        ScrollView {
         GeometryReader { geometry in
             let cardHeight = geometry.size.height < geometry.size.width ? 200.0 : 300.0
             
@@ -81,7 +79,7 @@ struct FlashcardView: View {
                 
                 .padding()
                 .frame(width: geometry.size.width, height: geometry.size.height)
-        } else {
+            } else {
                 VStack {
                     Spacer()
                     if shuffledTerms.isEmpty {
@@ -138,7 +136,6 @@ struct FlashcardView: View {
                         }
                         .padding()
                         
-                        
                         HStack {
                             Button{ /*"Previous"*/
                                 currentIndex -= 1
@@ -180,18 +177,12 @@ struct FlashcardView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                             }
-//                            .disabled(currentIndex == termsArray.count - 1)
                         }
                         .padding()
-                        //navigation buttons
-                        
-                        
                     }
                     Spacer()
                 }
-                //        .navigationTitle("\(topicTitle)")
             }
-            //    }
         }
         .onAppear {
             shuffledTerms = termsArray.shuffled()

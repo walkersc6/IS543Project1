@@ -94,6 +94,56 @@ let spanishTopics = [
         isCompleted: false),
     
     LanguageModel.LanguageTopic(
+            title: "Colors",
+            terms: [
+                "Rojo": "Red",
+                "Azul": "Blue",
+                "Amarillo": "Yellow",
+                "Verde": "Green",
+                "Naranja": "Orange",
+                "Morado": "Purple",
+                "Rosa": "Pink",
+                "Negro": "Black",
+                "Blanco": "White",
+                "Gris": "Gray",
+                "Marrón": "Brown",
+                "Dorado": "Gold",
+                "Plateado": "Silver"
+            ],
+            lesson: """
+            **Colors in Spanish**
+            
+            Colors (*los colores*) are adjectives in Spanish, which means they change to match the gender and number of the noun they describe.
+            
+            **Primary & Basic Colors:**
+            - *Rojo* (red), *azul* (blue), *amarillo* (yellow)
+            - *Verde* (green), *naranja* (orange), *morado* (purple)
+            - *Rosa* (pink)
+            
+            **Neutrals:**
+            - *Negro* (black), *blanco* (white), *gris* (gray)
+            - *Marrón* (brown)
+            
+            **Metallic Colors:**
+            - *Dorado* (gold), *plateado* (silver)
+            
+            **Gender Agreement:**
+            Most color adjectives ending in *-o* change to *-a* for feminine nouns:
+            - *El carro rojo* (the red car - masculine)
+            - *La casa roja* (the red house - feminine)
+            
+            Some colors like *azul*, *verde*, *naranja*, and *gris* don't change form regardless of gender.
+            
+            **Example Phrases:**
+            - *¿De qué color es?* (What color is it?)
+            - *Mi color favorito es...* (My favorite color is...)
+            - *El cielo es azul* (The sky is blue)
+            
+            **Tip:** In Spanish, color adjectives typically come *after* the noun, not before like in English. Say "la flor roja" (the flower red) instead of "the red flower."
+            """,
+            isCompleted: false),
+    
+    LanguageModel.LanguageTopic(
         title: "Common Phrases",
         terms: [
             "Hola": "Hello",
@@ -187,6 +237,179 @@ let spanishTopics = [
         **Tip:** In Spanish, weather is often expressed with "hacer" (to make/do). For example, "Hace sol" (It's sunny - literally "it makes sun").
         """,
         isCompleted: false),
+    
+    LanguageModel.LanguageTopic(
+            title: "Pets and Animals",
+            terms: [
+                "Perro": "Dog",
+                "Gato": "Cat",
+                "Pájaro": "Bird",
+                "Pez": "Fish",
+                "Conejo": "Rabbit",
+                "Hámster": "Hamster",
+                "Tortuga": "Turtle",
+                "Caballo": "Horse",
+                "Vaca": "Cow",
+                "Cerdo": "Pig",
+                "Pollo": "Chicken",
+                "Oveja": "Sheep",
+                "León": "Lion",
+                "Elefante": "Elephant",
+                "Mono": "Monkey"
+            ],
+            lesson: """
+            **Pets and Animals**
+            
+            Animals (*los animales*) are an important part of daily vocabulary, whether discussing pets (*mascotas*) or wildlife.
+            
+            **Common Pets:**
+            - *Perro* (dog) - man's best friend
+            - *Gato* (cat) - independent companion
+            - *Pájaro* (bird) - chirpy friend
+            - *Pez* (fish) - aquatic pet
+            - *Conejo* (rabbit), *hámster* (hamster), *tortuga* (turtle)
+            
+            **Farm Animals:**
+            - *Caballo* (horse), *vaca* (cow), *cerdo* (pig)
+            - *Pollo* (chicken - also means the meat), *oveja* (sheep)
+            
+            **Wild Animals:**
+            - *León* (lion), *elefante* (elephant), *mono* (monkey)
+            - *Tigre* (tiger), *oso* (bear), *jirafa* (giraffe)
+            
+            **Animal Sounds:**
+            Animals make different sounds in Spanish!
+            - Dogs say *guau guau* (woof woof)
+            - Cats say *miau* (meow)
+            - Roosters say *quiquiriquí* (cock-a-doodle-doo)
+            
+            **Useful Phrases:**
+            - *Tengo un perro* (I have a dog)
+            - *¿Tienes mascotas?* (Do you have pets?)
+            - *Mi gato se llama...* (My cat is named...)
+            - *Me encantan los animales* (I love animals)
+            
+            **Tip:** Like family terms, many animal names have masculine and feminine versions. *Perro* (male dog) vs *perra* (female dog), *gato* vs *gata*.
+            """,
+            isCompleted: false),
+        
+        LanguageModel.LanguageTopic(
+            title: "Time and Days",
+            terms: [
+                "Hora": "Hour/Time",
+                "Día": "Day",
+                "Semana": "Week",
+                "Mes": "Month",
+                "Año": "Year",
+                "Lunes": "Monday",
+                "Martes": "Tuesday",
+                "Miércoles": "Wednesday",
+                "Jueves": "Thursday",
+                "Viernes": "Friday",
+                "Sábado": "Saturday",
+                "Domingo": "Sunday",
+                "Hoy": "Today",
+                "Mañana": "Tomorrow",
+                "Ayer": "Yesterday"
+            ],
+            lesson: """
+            **Time and Days of the Week**
+            
+            Understanding time vocabulary (*el tiempo*) helps you schedule appointments, make plans, and talk about your day.
+            
+            **Time Units:**
+            - *Hora* (hour/time) - "¿Qué hora es?" means "What time is it?"
+            - *Día* (day), *semana* (week), *mes* (month), *año* (year)
+            
+            **Days of the Week:**
+            - *Lunes* (Monday) - start of the work week
+            - *Martes* (Tuesday), *miércoles* (Wednesday), *jueves* (Thursday)
+            - *Viernes* (Friday) - end of work week
+            - *Sábado* (Saturday), *domingo* (Sunday) - weekend!
+            
+            **Time References:**
+            - *Hoy* (today) - right now
+            - *Mañana* (tomorrow) - also means "morning"!
+            - *Ayer* (yesterday) - the past
+            - *Ahora* (now), *luego* (later)
+            
+            **Telling Time:**
+            - *¿Qué hora es?* (What time is it?)
+            - *Son las dos* (It's 2 o'clock)
+            - *Es la una* (It's 1 o'clock) - singular form
+            - *A las tres* (At 3 o'clock)
+            
+            **Example Phrases:**
+            - *Nos vemos el lunes* (See you Monday)
+            - *¿Qué día es hoy?* (What day is today?)
+            - *El fin de semana* (The weekend)
+            
+            **Tip:** In Spanish, days of the week are NOT capitalized unless they start a sentence. Also, the week traditionally starts on Monday, not Sunday!
+            """,
+            isCompleted: false),
+    
+    LanguageModel.LanguageTopic(
+            title: "Body Parts",
+            terms: [
+                "Cabeza": "Head",
+                "Cara": "Face",
+                "Ojo": "Eye",
+                "Ojos": "Eyes",
+                "Oreja": "Ear",
+                "Nariz": "Nose",
+                "Boca": "Mouth",
+                "Diente": "Tooth",
+                "Dientes": "Teeth",
+                "Mano": "Hand",
+                "Dedo": "Finger",
+                "Brazo": "Arm",
+                "Pierna": "Leg",
+                "Pie": "Foot",
+                "Espalda": "Back",
+                "Estómago": "Stomach",
+                "Corazón": "Heart"
+            ],
+            lesson: """
+            **Body Parts in Spanish**
+            
+            Knowing body parts (*las partes del cuerpo*) is essential for medical situations, describing how you feel, and daily activities.
+            
+            **The Head:**
+            - *Cabeza* (head) - the whole head
+            - *Cara* (face) - your facial features
+            - *Ojo/Ojos* (eye/eyes) - for seeing
+            - *Oreja* (ear) - for hearing
+            - *Nariz* (nose) - for smelling
+            - *Boca* (mouth) - for speaking and eating
+            - *Diente/Dientes* (tooth/teeth)
+            
+            **Upper Body:**
+            - *Brazo* (arm) - from shoulder to hand
+            - *Mano* (hand) - note: feminine despite ending in -o!
+            - *Dedo* (finger) - also means toe
+            - *Espalda* (back)
+            - *Estómago* (stomach)
+            - *Corazón* (heart)
+            
+            **Lower Body:**
+            - *Pierna* (leg) - from hip to foot
+            - *Pie* (foot) - for walking
+            - *Rodilla* (knee)
+            
+            **Describing Pain:**
+            - *Me duele...* (It hurts me... / My... hurts) - singular
+            - *Me duelen...* (They hurt me... / My... hurt) - plural
+            - *Me duele la cabeza* (My head hurts / I have a headache)
+            - *Me duelen los pies* (My feet hurt)
+            
+            **Example Phrases:**
+            - *Tengo dolor de estómago* (I have a stomach ache)
+            - *Me duele el brazo* (My arm hurts)
+            - *Levanta la mano* (Raise your hand)
+            
+            **Tip:** Use *me duele* with singular body parts and *me duelen* with plural parts. Also, *mano* is feminine even though it ends in -o, so say "la mano" not "el mano"!
+            """,
+            isCompleted: false),
     
     LanguageModel.LanguageTopic(
         title: "Food and Drink",
