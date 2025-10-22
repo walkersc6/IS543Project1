@@ -89,21 +89,41 @@ struct FlashcardView: View {
                     } else {
                         //card display
                         VStack(spacing: 20) {
-                            // front side of card (Spanish)
                             ZStack {
-                                RoundedRectangle(cornerRadius: 15)
-                                    .fill(Color.blue.opacity(0.2))
-                                    .frame(height: cardHeight)
+                                // front side of card (Spanish)
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .fill(Color.blue.opacity(0.2))
+                                        .frame(height: cardHeight)
+                                    
+                                    Text(shuffledTerms[currentIndex].spanish)
+                                        .font(.largeTitle)
+                                        .padding()
+                                }
+                                .frame(height: cardHeight)
+                                .opacity(isShowingAnswer ? 0: 1)
+                                .rotation3DEffect(
+                                    .degrees(cardRotation),
+                                    axis: (x: 1.0, y: 0.0, z: 0.0)
+                                )
                                 
-                                Text(isShowingAnswer ? shuffledTerms[currentIndex].english : shuffledTerms[currentIndex].spanish)
-                                    .font(.largeTitle)
-                                    .padding()
+                                // Back of card with English
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 15)
+                                        .fill(Color.blue.opacity(0.2))
+                                    
+                                    Text(shuffledTerms[currentIndex].english)
+                                        .font(.largeTitle)
+                                        .padding()
+                                }
+                                .frame(height: cardHeight)
+                                .opacity(isShowingAnswer ? 1 : 0)
+                                .rotation3DEffect(
+                                    .degrees(cardRotation + 180),  // Start 180° rotated
+                                    axis: (x: 1.0, y: 0.0, z: 0.0)
+                                )
                             }
-                            .frame(height: cardHeight)
-                            .rotation3DEffect(
-                                .degrees(cardRotation),
-                                axis: (x: 1.0, y: 0.0, z: 0.0)
-                            )
+                            
                             .contentShape(Rectangle())
                             .onTapGesture {
 //                                isShowingAnswer.toggle()
